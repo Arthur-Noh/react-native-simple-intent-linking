@@ -6,9 +6,12 @@
 
 ## Usage
 ```javascript
-import RNSimpleIntentLinking from 'react-native-simple-intent-linking';
+import SimpleLinking from 'react-native-simple-intent-linking';
 
-// TODO: What to do with the module?
-RNSimpleIntentLinking;
+// open other app
+await SimpleLinking.openURL('intent://...INTENT-LINK...');
+
+// check is vaild intent link
+await SimpleLinking.canOpenURL('intent://...INTENT-LINK...'); // boolean
 ```
   
