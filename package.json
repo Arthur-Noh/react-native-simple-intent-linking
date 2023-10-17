@@ -2,7 +2,7 @@
 {
   "name": "react-native-simple-intent-linking",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple use intent link in react-native",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,9 +10,9 @@
   "keywords": [
     "react-native"
   ],
-  "author": "",
-  "license": "",
+  "author": "Arthur-Noh",
+  "license": "MIT",
   "peerDependencies": {
-    "react-native": "^0.41.2"
+    "react-native": "*"
   }
 }
