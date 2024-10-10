@@ -1,15 +1,13 @@
-package com.simpleintentlinking;
+package com.simpleintentlinking
 
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
 
-import com.facebook.react.bridge.Promise;
-import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.bridge.ReactContextBaseJavaModule;
-import com.facebook.react.bridge.ReactMethod;
-
-import java.util.List;
+import com.facebook.react.bridge.Promise
+import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.bridge.ReactContextBaseJavaModule
+import com.facebook.react.bridge.ReactMethod
 
 class RNSimpleIntentLinkingModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
