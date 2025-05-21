@@ -11,8 +11,6 @@ import com.facebook.react.bridge.ReactMethod
 
 class RNSimpleIntentLinkingModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
-    private val reactContext: ReactApplicationContext = reactContext
-
     override fun getName(): String {
         return "RNSimpleIntentLinking"
     }
@@ -22,10 +20,17 @@ class RNSimpleIntentLinkingModule(reactContext: ReactApplicationContext) : React
         try {
             val intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            reactContext.currentActivity?.startActivity(intent)
+
+            val activity = currentActivity
+            if (activity != null) {
+                activity.startActivity(intent)
+            } else {
+                reactContext.startActivity(intent)
+            }
+
             promise.resolve(null)
         } catch (exception: Exception) {
-            promise.reject(exception)
+            promise.reject("OPEN_URL_ERROR", "Failed to open URL: $url", exception)
         }
     }
 
@@ -34,11 +39,11 @@ class RNSimpleIntentLinkingModule(reactContext: ReactApplicationContext) : React
         try {
             val intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME)
             val manager: PackageManager = reactContext.packageManager
-            val infoList: List<ResolveInfo> = manager.queryIntentActivities(intent, 0)
+            val infoList = manager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
 
             promise.resolve(infoList.isNotEmpty())
         } catch (exception: Exception) {
-            promise.reject(exception)
+            promise.reject("CAN_OPEN_URL_ERROR", "Failed to check URL availability: $url", exception)
         }
     }
 }

@@ -1,11 +1,19 @@
 declare module 'react-native-simple-intent-linking' {
+    /**
+     * Opens the given URL. If on Android and using `intent://`, it will delegate to the native module.
+     * Otherwise falls back to `Linking.openURL`.
+     */
+    export function openURL(url: string): Promise<any>;
 
-    export interface SimpleIntentLinkingProps {
-        openURL: (url: string) => Promise<any>;
-        canOpenURL: (url: string) => Promise<boolean>;
-    }
+    /**
+     * Checks whether the given URL can be opened.
+     */
+    export function canOpenURL(url: string): Promise<boolean>;
 
-    const SimpleLinking: SimpleIntentLinkingProps
+    const SimpleLinking: {
+        openURL: typeof openURL;
+        canOpenURL: typeof canOpenURL;
+    };
 
     export default SimpleLinking;
 }

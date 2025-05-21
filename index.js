@@ -2,28 +2,35 @@ import { NativeModules, Linking, Platform } from 'react-native';
 
 const { RNSimpleIntentLinking } = NativeModules;
 
+/**
+ * Open a URL using native linking or custom Android intent.
+ */
 const openURL = (url) => {
-    if (Platform.OS !== 'android' || url.indexOf('intent:') !== 0) {
+    if (Platform.OS !== 'android' || !url.startsWith('intent:')) {
         return Linking.openURL(url);
     }
 
-    if (RNSimpleIntentLinking) {
+    // Android intent://
+    if (RNSimpleIntentLinking && RNSimpleIntentLinking.openURL) {
         return RNSimpleIntentLinking.openURL(url);
     }
 
-    return new Promise((resolve, reject) => reject('not found modules'));
+    return Promise.reject(new Error('RNSimpleIntentLinking module not found'));
 };
 
+/**
+ * Check if a URL can be opened.
+ */
 const canOpenURL = (url) => {
-    if (Platform.OS !== 'android' || url.indexOf('intent:') !== 0) {
-        return Linking.openURL(url);
+    if (Platform.OS !== 'android' || !url.startsWith('intent:')) {
+        return Linking.canOpenURL(url);
     }
 
-    if (RNSimpleIntentLinking) {
+    if (RNSimpleIntentLinking && RNSimpleIntentLinking.canOpenURL) {
         return RNSimpleIntentLinking.canOpenURL(url);
     }
 
-    return new Promise((resolve, reject) => reject('not found modules'));
+    return Promise.reject(new Error('RNSimpleIntentLinking module not found'));
 };
 
 export default {
