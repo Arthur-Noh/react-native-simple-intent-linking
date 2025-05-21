@@ -1,23 +1,35 @@
 {
   "name": "react-native-simple-intent-linking",
-  "version": "2.0.3",
-  "description": "Simple use intent link in react-native",
+  "version": "2.1.0",
+  "description": "Simple use webview intent link in react-native",
   "main": "index.js",
+  "types": "./index.d.ts",
+  "react-native": "index.js",
   "homepage": "https://github.com/Arthur-Noh/react-native-simple-intent-linking/blob/main/README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Arthur-Noh/react-native-simple-intent-linking"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
-    "react-native"
+    "react-native",
+    "intent",
+    "android",
+    "webview",
+    "linking",
+    "url"
   ],
   "author": "Arthur-Noh",
   "license": "MIT",
   "peerDependencies": {
     "react-native": "*"
   },
-  "types": "./index.d.ts"
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "android/",
+    "ios/"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
