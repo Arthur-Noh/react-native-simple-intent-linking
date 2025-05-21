@@ -25,7 +25,7 @@ class RNSimpleIntentLinkingModule(reactContext: ReactApplicationContext) : React
             if (activity != null) {
                 activity.startActivity(intent)
             } else {
-                reactContext.startActivity(intent)
+                reactApplicationContext.startActivity(intent)
             }
 
             promise.resolve(null)
@@ -38,7 +38,7 @@ class RNSimpleIntentLinkingModule(reactContext: ReactApplicationContext) : React
     fun canOpenURL(url: String, promise: Promise) {
         try {
             val intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME)
-            val manager: PackageManager = reactContext.packageManager
+            val manager: PackageManager = reactApplicationContext.packageManager
             val infoList = manager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
 
             promise.resolve(infoList.isNotEmpty())
@@ -47,3 +47,4 @@ class RNSimpleIntentLinkingModule(reactContext: ReactApplicationContext) : React
         }
     }
 }
+
