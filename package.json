@@ -1,6 +1,6 @@
 {
   "name": "react-native-simple-intent-linking",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Simple use webview intent link in react-native",
   "main": "index.js",
   "types": "./index.d.ts",
