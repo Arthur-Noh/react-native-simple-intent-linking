@@ -1,6 +1,6 @@
 {
-  "name": "react-native-simple-intent-linking",
-  "version": "2.1.1",
+  "name": "@arthur-noh/react-native-simple-intent-linking",
+  "version": "2.1.2",
   "description": "Simple use webview intent link in react-native",
   "main": "index.js",
   "types": "./index.d.ts",
@@ -31,5 +31,8 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }
