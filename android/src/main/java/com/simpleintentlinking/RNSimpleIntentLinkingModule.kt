@@ -26,7 +26,7 @@ class RNSimpleIntentLinkingModule(reactContext: ReactApplicationContext) : React
 
       promise.resolve(null)
     } catch (exception: Exception) {
-      promise.reject("OPEN_URL_ERROR", "Failed to open URL: $url", e)
+      promise.reject("OPEN_URL_ERROR", "Failed to open URL: $url", exception)
     }
   }
 
@@ -39,7 +39,7 @@ class RNSimpleIntentLinkingModule(reactContext: ReactApplicationContext) : React
 
       promise.resolve(canHandle)
     } catch (exception: Exception) {
-      promise.reject("CAN_OPEN_URL_ERROR", "Failed to check URL availability: $url", e)
+      promise.reject("CAN_OPEN_URL_ERROR", "Failed to check URL availability: $url", exception)
     }
   }
 }
